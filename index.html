@@ -14,6 +14,7 @@
   --bg:#0b0b10; --layer:#0f1117; --soft:#131624; --text:#e8ecf4; --muted:#a9b0c3;
   --border:#232536; --glow1:#6ae3ff; --glow2:#a0ff9f; --cta:#6ae3ff;
   --card-radius:18px; --shadow: 0 14px 40px rgba(0,0,0,.35);
+  --vh: 1vh;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -25,12 +26,13 @@ body{
     radial-gradient(900px 650px at -10% 10%, rgba(160,255,159,.05), transparent 55%),
     var(--bg);
   line-height:1.55;
+  padding-top:80px;
 }
 a{color:var(--cta); text-decoration:none}
 .wrap{max-width:1200px; margin:0 auto; padding:26px}
-.nav{display:flex; align-items:center; justify-content:space-between; gap:16px; position:sticky; top:0;
-     background:linear-gradient(180deg, rgba(11,11,16,.9), rgba(11,11,16,.6) 70%, transparent);
-     backdrop-filter:saturate(120%) blur(6px); z-index:100; padding:12px 0 8px}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:16px; position:fixed; top:0; left:0; right:0;
+     background:linear-gradient(180deg, rgba(11,11,16,.95), rgba(11,11,16,.8) 70%, transparent);
+     backdrop-filter:saturate(120%) blur(6px); z-index:100; padding:12px 26px 8px; max-width:1200px; margin:0 auto}
 .brand{display:flex; align-items:center; gap:10px; color:var(--text)}
 .logo{width:42px; height:42px; border-radius:999px;
   background:radial-gradient(circle at 30% 30%, white 2%, var(--glow1) 20%, transparent 21%) ,
@@ -826,8 +828,28 @@ function closeMobileMenu() {
   menuBtn.classList.remove('active');
 }
 
+// Android viewport handling
+function handleAndroidViewport() {
+  // Detect if we're on Android
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  if (!isAndroid) return;
+  
+  // Set viewport height to prevent address bar issues
+  const setViewportHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+  
+  setViewportHeight();
+  window.addEventListener('resize', setViewportHeight);
+  window.addEventListener('orientationchange', setViewportHeight);
+}
+
 // Smooth scrolling with offset for sticky navigation
 document.addEventListener('DOMContentLoaded', function() {
+  // Handle Android viewport issues
+  handleAndroidViewport();
+  
   // Get all navigation links that start with #
   const navLinks = document.querySelectorAll('a[href^="#"]');
   
