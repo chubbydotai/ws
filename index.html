@@ -1,332 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chubby.Ai</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f0; /* Light grey background */
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chubby.Ai — Chubby.Computer | Quarter Chubby · Chubby Box · 8‑GPU Server</title>
+<meta name="description" content="Buy AI computers that are lightningt fast and are supported with white-gloves. Quarter Chubby (5090 AI PC), Chubby Box (4‑GPU AI Workstation), and 8‑GPU Server. Backed by Chubby.Center—modular 1MW Factory‑Datacenters that scale to 1GW+.">
+<meta property="og:title" content="Chubby.Computer — High‑Performance AI PCs, Workstations, Servers">
+<meta property="og:description" content="Quarter Chubby (5090 AI PC), Chubby Box (4‑GPU AI Workstation), and 8‑GPU Server. Built by an AI factory‑datacenter developer.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0b10">
+<style>
+:root{
+  --bg:#0b0b10; --layer:#0f1117; --soft:#131624; --text:#e8ecf4; --muted:#a9b0c3;
+  --border:#232536; --glow1:#6ae3ff; --glow2:#a0ff9f; --cta:#6ae3ff;
+  --card-radius:18px; --shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1000px 700px at 80% -10%, rgba(106,227,255,.06), transparent 55%),
+    radial-gradient(900px 650px at -10% 10%, rgba(160,255,159,.05), transparent 55%),
+    var(--bg);
+  line-height:1.55;
+}
+a{color:var(--cta); text-decoration:none}
+.wrap{max-width:1200px; margin:0 auto; padding:26px}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:16px; position:sticky; top:0;
+     background:linear-gradient(180deg, rgba(11,11,16,.9), rgba(11,11,16,.6) 70%, transparent);
+     backdrop-filter:saturate(120%) blur(6px); z-index:10; padding:12px 0 8px}
+.brand{display:flex; align-items:center; gap:10px; color:var(--text)}
+.logo{width:42px; height:42px; border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, white 2%, var(--glow1) 20%, transparent 21%) ,
+             conic-gradient(from 220deg, var(--glow1), var(--glow2));
+  box-shadow:0 0 0 2px rgba(255,255,255,.06), 0 10px 30px rgba(106,227,255,.25);
+}
+.btn{display:inline-block; background:linear-gradient(135deg,var(--glow1),var(--glow2));
+     color:#001018; font-weight:800; padding:12px 18px; border-radius:12px; box-shadow:var(--shadow)}
+.btn.ghost{background:transparent; color:var(--text); border:1px solid var(--border); box-shadow:none}
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center; padding:18px 0 10px}
+.card{
+  background:linear-gradient(180deg, var(--soft), var(--layer));
+  border:1px solid var(--border); border-radius:var(--card-radius); padding:22px; box-shadow:var(--shadow);
+}
+h1{font-size:clamp(32px,4vw,48px); line-height:1.08; margin:.2em 0 .3em}
+.lead{font-size:clamp(18px,2.1vw,22px); color:var(--muted)}
+.grid{display:grid; gap:18px}
+.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.kpi{display:grid; gap:6px; text-align:center; background:linear-gradient(180deg,#141828,#0f1117);
+     border:1px solid var(--border); border-radius:14px; padding:14px}
+.kpi b{font-size:20px}
+.section{margin:34px 0}
+h2{font-size:clamp(22px,2.6vw,30px); margin:0 0 12px}
+h3{font-size:18px; margin:0 0 6px}
+p{margin:.35em 0}
+.muted{color:var(--muted)}
+.pill{display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border:1px solid var(--border);
+     border-radius:999px; color:var(--muted); font-weight:650; font-size:14px}
+.table-wrap{overflow:auto; border:1px solid var(--border); border-radius:12px}
+table{width:100%; border-collapse:collapse}
+th,td{padding:10px 8px; border-bottom:1px solid var(--border); text-align:right; white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+.note{font-size:12px; color:var(--muted)}
+.badge{font-size:12px; padding:4px 8px; border:1px solid var(--border); border-radius:8px; color:var(--muted)}
+@media (max-width:980px){ .hero{grid-template-columns:1fr} .cols-3{grid-template-columns:1fr} .cols-2{grid-template-columns:1fr} }
+.highlight{background:linear-gradient(90deg, rgba(106,227,255,.15), rgba(160,255,159,.08)); border-radius:10px; padding:2px 6px}
+.price{font-weight:800; font-size:20px}
+.pros{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
+.pros span{border:1px solid var(--border); border-radius:9px; padding:6px 8px; font-size:13px; color:var(--muted)}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+.footer{padding:30px 0; color:var(--muted); border-top:1px solid var(--border); margin-top:30px}
+.small{font-size:12px; color:var(--muted)}
+.code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
 
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            width: 100%;
-            max-width: 800px; /* Adjust as needed */
-            box-sizing: border-box;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Slight shadow for depth */
-            margin: 20px; /* Creates the spacing for the "frame" */
-        }
-
-        /* Styling for the frame effect */
-        @media (min-width: 840px) { /* Adjust breakpoint as needed */
-            body {
-                padding: 20px; /* Add padding to the body */
-            }
-            .container {
-                margin: 20px;
-                border: 1px solid #ccc; /* Light grey border */
-                border-radius: 5px;
-            }
-        }
-
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ccc;
-            margin: 20px 0;
-        }
-
-        i {
-            font-style: italic;
-        }
-        .table-responsive {
-            width: 100%;
-            text-align: center;
-        }
-    </style>
+/* New simplified classes */
+.mission-header{text-align:center; margin-bottom:40px; position:relative}
+.mission-logo{display:inline-flex; align-items:center; gap:15px; margin-bottom:20px}
+.mission-logo-circle{width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, var(--glow1), var(--glow2)); box-shadow:0 0 30px rgba(106,227,255,0.4), 0 0 60px rgba(160,255,159,0.2)}
+.mission-title{font-size:48px; margin:0; background:linear-gradient(135deg, var(--glow1), var(--glow2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-shadow:0 0 30px rgba(106,227,255,0.3)}
+.mission-subtitle{font-size:28px; color:var(--glow2); font-weight:700; margin:0; text-shadow:0 0 20px rgba(160,255,159,0.4)}
+.card.mission-card{background:linear-gradient(135deg, rgba(106,227,255,0.1), rgba(106,227,255,0.05)); border:2px solid var(--glow1); padding:25px; position:relative; overflow:hidden}
+.card.mission-card-green{background:linear-gradient(135deg, rgba(160,255,159,0.1), rgba(160,255,159,0.05)); border:2px solid var(--glow2)}
+.mission-decor{position:absolute; top:-20px; right:-20px; width:60px; height:60px; background:radial-gradient(circle, var(--glow1), transparent); opacity:0.3; border-radius:50%}
+.mission-decor-green{position:absolute; top:-20px; right:-20px; width:60px; height:60px; background:radial-gradient(circle, var(--glow2), transparent); opacity:0.3; border-radius:50%}
+.mission-heading{color:var(--glow1); font-size:32px; margin-bottom:20px; text-shadow:0 0 15px rgba(106,227,255,0.3)}
+.mission-heading-green{color:var(--glow2); text-shadow:0 0 15px rgba(160,255,159,0.3)}
+.mission-text{font-size:22px; font-weight:700; line-height:1.4; margin:0}
+.card.problem-card{background:linear-gradient(135deg, rgba(255,100,100,0.15), rgba(255,100,100,0.05)); border:2px solid #ff6464; padding:25px; position:relative; overflow:hidden; box-shadow:0 8px 25px rgba(255,100,100,0.1)}
+.card.problem-card-orange{background:linear-gradient(135deg, rgba(255,120,100,0.15), rgba(255,120,100,0.05)); border:2px solid #ff7864; padding:25px; position:relative; overflow:hidden; box-shadow:0 8px 25px rgba(255,120,100,0.1)}
+.card.problem-card-orange2{background:linear-gradient(135deg, rgba(255,140,100,0.15), rgba(255,140,100,0.05)); border:2px solid #ff8c64; padding:25px; position:relative; overflow:hidden; box-shadow:0 8px 25px rgba(255,140,100,0.1)}
+.card.problem-card-orange3{background:linear-gradient(135deg, rgba(255,160,100,0.15), rgba(255,160,100,0.05)); border:2px solid #ffa064; padding:25px; position:relative; overflow:hidden; box-shadow:0 8px 25px rgba(255,160,100,0.1)}
+.problem-decor{position:absolute; top:-15px; right:-15px; width:40px; height:40px; background:radial-gradient(circle, #ff6464, transparent); opacity:0.4; border-radius:50%}
+.problem-decor-orange{position:absolute; top:-15px; right:-15px; width:40px; height:40px; background:radial-gradient(circle, #ff7864, transparent); opacity:0.4; border-radius:50%}
+.problem-decor-orange2{position:absolute; top:-15px; right:-15px; width:40px; height:40px; background:radial-gradient(circle, #ff8c64, transparent); opacity:0.4; border-radius:50%}
+.problem-decor-orange3{position:absolute; top:-15px; right:-15px; width:40px; height:40px; background:radial-gradient(circle, #ffa064, transparent); opacity:0.4; border-radius:50%}
+.problem-heading{color:#ff6464; margin-bottom:15px; font-size:20px; text-shadow:0 0 10px rgba(255,100,100,0.3)}
+.problem-heading-orange{color:#ff7864; text-shadow:0 0 10px rgba(255,120,100,0.3)}
+.problem-heading-orange2{color:#ff8c64; text-shadow:0 0 10px rgba(255,140,100,0.3)}
+.problem-heading-orange3{color:#ffa064; text-shadow:0 0 10px rgba(255,160,100,0.3)}
+.problem-text{margin:0; line-height:1.6}
+.card.solution-highlight{padding:30px; background:linear-gradient(135deg, rgba(106,227,255,0.2), rgba(160,255,159,0.15)); border:3px solid var(--border); margin-bottom:40px; position:relative; overflow:hidden; box-shadow:0 15px 40px rgba(106,227,255,0.15)}
+.solution-decor1{position:absolute; top:-30px; right:-30px; width:100px; height:100px; background:radial-gradient(circle, var(--glow1), transparent); opacity:0.2; border-radius:50%}
+.solution-decor2{position:absolute; bottom:-30px; left:-30px; width:80px; height:80px; background:radial-gradient(circle, var(--glow2), transparent); opacity:0.2; border-radius:50%}
+.solution-text{font-size:20px; line-height:1.7; margin:0; font-weight:600}
+.card.kpi-enhanced{text-align:center; background:linear-gradient(180deg, rgba(106,227,255,0.15), rgba(106,227,255,0.05)); border:2px solid var(--glow1); padding:25px; box-shadow:0 10px 30px rgba(106,227,255,0.15); position:relative; overflow:hidden}
+.card.kpi-enhanced-green{background:linear-gradient(180deg, rgba(160,255,159,0.15), rgba(160,255,159,0.05)); border:2px solid var(--glow2); box-shadow:0 10px 30px rgba(160,255,159,0.15)}
+.card.kpi-enhanced-blue{background:linear-gradient(180deg, rgba(106,227,255,0.15), rgba(106,227,255,0.05)); border:2px solid var(--cta); box-shadow:0 10px 30px rgba(106,227,255,0.15)}
+.kpi-decor{position:absolute; top:-20px; right:-20px; width:50px; height:50px; background:radial-gradient(circle, var(--glow1), transparent); opacity:0.3; border-radius:50%}
+.kpi-decor-green{position:absolute; top:-20px; right:-20px; width:50px; height:50px; background:radial-gradient(circle, var(--glow2), transparent); opacity:0.3; border-radius:50%}
+.kpi-decor-blue{position:absolute; top:-20px; right:-20px; width:50px; height:50px; background:radial-gradient(circle, var(--cta), transparent); opacity:0.3; border-radius:50%}
+.kpi-heading{color:var(--glow1); margin-bottom:15px; font-size:22px; text-shadow:0 0 15px rgba(106,227,255,0.3)}
+.kpi-heading-green{color:var(--glow2); text-shadow:0 0 15px rgba(160,255,159,0.3)}
+.kpi-heading-blue{color:var(--cta); text-shadow:0 0 15px rgba(106,227,255,0.3)}
+.kpi-text{margin:0; font-size:16px; line-height:1.5}
+.card.framework-highlight{padding:25px; background:linear-gradient(135deg, rgba(106,227,255,0.15), rgba(160,255,159,0.15)); border:2px solid var(--border); margin-bottom:30px}
+.framework-title{color:var(--text); font-size:24px; margin-bottom:15px; text-align:center}
+.framework-grid{gap:20px; text-align:center; margin-bottom:20px}
+.framework-grid .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.framework-item{text-align:center}
+.framework-heading{color:var(--glow1); margin-bottom:10px; font-size:16px}
+.framework-heading-green{color:var(--glow2)}
+.framework-heading-blue{color:var(--cta)}
+.framework-text{font-size:14px; line-height:1.4}
+.cta-section{text-align:center; margin-top:40px}
+.cta-title{color:var(--text); font-size:28px; margin-bottom:20px}
+.cta-text{font-size:18px; margin-bottom:25px}
+.card.computer-section{background:linear-gradient(180deg, rgba(106,227,255,0.1), var(--layer)); border:2px solid var(--glow1); box-shadow:0 20px 50px rgba(106,227,255,0.15)}
+.computer-header{text-align:center; margin-bottom:30px}
+.computer-title{font-size:36px; margin-bottom:15px; background:linear-gradient(135deg, var(--glow1), var(--glow2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text}
+.computer-subtitle{font-size:20px; color:var(--muted); margin:0}
+.card.computer-card{background:linear-gradient(180deg, rgba(106,227,255,0.05), rgba(106,227,255,0.02)); border:1px solid var(--border); padding:25px; position:relative; overflow:hidden; box-shadow:0 8px 25px rgba(106,227,255,0.1)}
+.card.computer-card-green{background:linear-gradient(180deg, rgba(160,255,159,0.05), rgba(160,255,159,0.02)); box-shadow:0 8px 25px rgba(160,255,159,0.1)}
+.computer-decor{position:absolute; top:-20px; right:-20px; width:60px; height:60px; background:radial-gradient(circle, var(--glow1), transparent); opacity:0.3; border-radius:50%}
+.computer-decor-green{position:absolute; top:-20px; right:-20px; width:60px; height:60px; background:radial-gradient(circle, var(--glow2), transparent); opacity:0.3; border-radius:50%}
+.computer-decor-blue{position:absolute; top:-20px; right:-20px; width:60px; height:60px; background:radial-gradient(circle, var(--cta), transparent); opacity:0.3; border-radius:50%}
+.computer-heading{color:var(--glow1); font-size:24px; margin-bottom:20px; font-weight:800; line-height:1.2; text-shadow:0 0 20px rgba(106,227,255,0.3); background:linear-gradient(135deg, var(--glow1), #ffffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text}
+.computer-heading-green{color:var(--glow2); font-weight:800; text-shadow:0 0 20px rgba(160,255,159,0.3); background:linear-gradient(135deg, var(--glow2), #ffffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text}
+.computer-heading-blue{color:var(--cta); font-weight:800; text-shadow:0 0 20px rgba(106,227,255,0.3); background:linear-gradient(135deg, var(--cta), #ffffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text}
+.computer-price{font-size:28px; color:var(--glow1); margin-bottom:15px; font-weight:900; text-shadow:0 0 25px rgba(106,227,255,0.4); background:linear-gradient(135deg, var(--glow1), var(--glow2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.5px}
+.computer-price-green{color:var(--glow2); font-weight:900; text-shadow:0 0 25px rgba(160,255,159,0.4); background:linear-gradient(135deg, var(--glow2), #a0ff9f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.5px}
+.computer-price-blue{color:var(--cta); font-weight:900; text-shadow:0 0 25px rgba(106,227,255,0.4); background:linear-gradient(135deg, var(--cta), var(--glow1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.5px}
+.computer-desc{margin-bottom:20px}
+.computer-pros{margin-bottom:20px}
+.computer-pros span{background:rgba(106,227,255,0.1); border:1px solid var(--glow1); border-radius:9px; padding:6px 8px; font-size:13px; color:var(--muted); display:inline-block; margin:2px}
+.computer-pros-green span{background:rgba(160,255,159,0.1); border-color:var(--glow2)}
+.computer-pros-blue span{background:rgba(106,227,255,0.1); border-color:var(--cta)}
+.limited-badge{display:inline-block; background:linear-gradient(135deg, #ff6b6b, #ff8e8e); color:#ffffff; font-size:11px; font-weight:800; padding:6px 12px; border-radius:15px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px; box-shadow:0 3px 10px rgba(255,107,107,0.3)}
+.limited-badge-green{background:linear-gradient(135deg, #ff6b6b, #ff8e8e); box-shadow:0 3px 10px rgba(255,107,107,0.3)}
+.toggle-large{font-size:28px; font-weight:900; padding:24px; width:100%}
+.toggle-small{font-size:16px; font-weight:800; padding:12px 18px; width:auto}
+.section-heading{color:var(--text); font-size:26px; margin-bottom:20px}
+.section-grid{gap:20px; margin-bottom:30px}
+.section-grid-2{gap:30px; margin-bottom:40px}
+.section-grid-3{gap:25px; margin-bottom:40px}
+.core-heading{color:var(--glow1); margin-bottom:15px}
+.core-heading-green{color:var(--glow2)}
+.core-list{line-height:1.8}
+</style>
 </head>
-
 <body>
-
-    <div class="container">
-        <h1>Chubby.Ai</h1>
-
-            <p>Abundance All-Round.</p>
-
-        <h2>Mission</h2>
-
-            <p>Help feed, house, and self-actualize humans.</p>
-
-        <h2>What problem exists?</h2>
-
-            <p>There are somewhere between 750,000 to 1 million homeless humans in the USA on a given night.</p>
-
-            <p>According to Realtor.com, the USA market was short 4 million homes in 2024.</p>
-
-            <p>There has been a major push for domestic USA manufacturing as the AI / humanoid robotics race with China accelerates.</p>
-
-            <p>There are roughly 2 billion humans or 1/4 of the planet without adequate access to toilets and clean water.</p>
-
-            <p>There will be an additional 2 billion people on the planet within the next 25 years.</p>
-
-            <p>AI investment is accelerating end-to-end, creating power limited data centers.</p>
-
-            <p>Data center and manufacturing capacity align with more people and housing developments.</p>
-
-            <p>There are roughly as many school districts as municipalities, yet half as many post-secondary institutions.</p>
-
-            <p>Lack of post-secondary education facilities are limiting for human intelligence in a similar way that lack of electricity generation facilities is limiting for artificial intelligence. There are nearly twice as many utility scale power generating facilities as Title IV post-secondary institutions, with a major push to build more. No such push for higher education exists at such scale.</p>
-
-            <p>Without planning, communities sparked by economic development can have disastrous consequences to quality of life for all involved.</p>
-
-            <p>We need to build manufacturing and data center capacity for AI and humanoids to be of the most value to humans. Locality of that space matters.</p>
-
-            <p><b>Simplified:</b> We need AI driven factories, higher education, and town infrastructure decentralized around the USA and abroad.</p>
-
-        <h2>What is the Chubby.Ai solution?</h2>
-
-            <p>We are building Chubby MOM, a network of 1,000 Chubby Centers -- 1MW (small data centers by current AI industry standards) EDGE Factory-Datacenters, allowing us to seed 1,000 one-hundred to two-thousand acre Chubby Towns -- Factory College Towns around the USA.</p>
-
-            <p>This is how we build millions of homes, while also planning out the neighborhoods for a high quality of life.</p>
-
-            <p>Building a distributed and decentralized supply chain infrastructure for food, housing, data centers, electronics, robotics, and everything else for human needs to be met.</p>
-
-            <p>This is simple, turn land into buildings and infrastructure. We are building housing for happier humans and facilities for businesses to thrive.</p>
-
-            <p>AI abundance won't come overnight, it is a long-term collaboration of humans and machines, as it has been for the entire industrial revolution.</p>
-
-            <p><b>Simplified:</b> We are building a supply chain advanced enough for humanoid robotics and AI compute, but also focused on basic human needs. We are building small manufacturing data centers that seed into building 100-2,000 acre sidekick towns dedicated to manufacturing, education, and affordable quality housing. These are meant to assist and complement surrounding areas.</p>
-
-            <p>Get in Touch (<a href="mailto:chubbydotai@chubby.ai">chubbydotai@chubby.ai</a>)</p>
-
-        <h2>Products and Basic Rollout</h2>
-
-            <p>$10,000 AI Personal Computer</p>
-
-            <p>$100,000 AI Workstation Computer</p>
-
-            <p>Chubby Center -- We currently have a Prototype Factory-Datacenter.</p>
-
-            <p>10 additional separate Chubby Center Factory-Datacenters strategically located around the USA.</p>
-
-            <p>Scale 10x to 100 Chubby Center Factory-Datacenter locations.</p>
-
-            <p>Scale 10x again to 1,000 Chubby Center Factory-Datacenter locations. This is Chubby MOM, the Modular Omni Mind, a nationwide AI manufacturing computer dedicated to helping feed, house, and empower humans to live, work, play, love, learn, and pay-it-forward. Chubby MOM is important for leasing income, manufacturing capacity, and for using the compute ourselves as-needed.</p>
-
-            <p>Chubby House -- Human assisted Factory and Robotic Fabricated Homes, from 200 to thousands of square feet.</p>
-        
-            <p>We begin construction on Chubby Towns -- Factory College Towns, as more complex planning and approval processes are completed. Without focusing on single properties, we can move quicker and more efficiently. These sidekick mini-towns are a planned way to expand our capacity while having a positive impact on surrounding communities.</p>
-
-            <p>From edge AI to entire towns, we're building a backbone for tomorrow's innovation.</p>
-
-            <p>Get in Touch (<a href="mailto:chubbydotai@chubby.ai">chubbydotai@chubby.ai</a>)</p>
-
-        <h2>Why Chubby.Ai?</h2>
-
-            <p>We are creating our own manufacturing supply chain during build-out.</p>
-
-            <p>The AI revolution demands speed, proximity, and reliability. Centralized AI cloud requires entirely new electricity infrastructure that takes years of approvals and build-outs for massive campuses that deeply impact surrounding areas. That's where we come in.</p>
-
-            <p>Nationwide Coverage: 1,000 strategically placed data centers across the USA, connected by a high-speed fiber grid.</p>
-
-            <p>Edge AI Optimized: Built for inference, training, and real-time analytics -- right where you need it.</p>
-
-            <p>Scalable Power: 1MW data centers -- designed to expand with growing demands of our clients, as well as adjusting to abundant electricity pockets.</p>
-
-            <p>Lower Latency: Process data closer to the source, when time is critical.</p>
-
-            <p>Lower Environmental Impact: We blend in with the environment by utilizing compact footprints.</p>
-
-            <p>This allows AI to impact human lives WITH those humans.</p>
-
-            <p>We are on a mission to feed, house, and empower human needs. This is truly about human fulfillment long-term, while helping our supporters make good reliable money in the process.</p>
-
-        <h2>The Chubby.Ai Advantage: We Build Real World Infrastructure.</h2>
-
-            <p>We're not just infrastructure -- we're a partner in unlocking AI's potential for human abundance.</p>
-
-            <p>For Enterprises: Accelerate IoT (Internet of Things), 5G +, autonomous systems, and factories with edge-native compute.</p>
-
-            <p>For Innovators: Deploy AI workloads seamlessly, from coast to coast.</p>
-
-            <p>For a Smarter World: Enable everything from precision agriculture to urban mobility.</p>
-
-            <p>By backing growth with real world infrastructure, we always have physical assets backing our valuation. Going from no outside investment to Series A is the most significant risk period, it is our time to prove we execute on our mission and vision. We made progress from concept into a prototype Chubby Computer and Factory-Datacenter property, but we need your help accelerating now that useful AI is here.</p>
-
-            <p>We have a simple path utilizing both debt and equity to build a 1,000 location network of Chubby Centers, funding and execution is what matters now.</p>
-
-        <h2>Our Network: Chubby MOM</h2>
-
-            <p>1,000 Factory-Datacenters: Compact, efficient, and purpose-built for AI.</p>
-
-            <p>Fiber Backbone: High-capacity fiber linking every node in multiple directions.</p>
-
-            <p>Redundant & Resilient: Engineered for uptime, security, and scale.</p>
-
-            <p>A nationwide AI manufacturing computer. A nationwide advanced manufacturing supply chain.</p>
-
-            <p>Get in Touch (<a href="mailto:chubbydotai@chubby.ai">chubbydotai@chubby.ai</a>)</p>
-
-        <h2>Our Vision: Chubby Town</h2>
-
-            <p>"Abundance All-Round" is our motto, because we believe human abundance is possible and necessary with intelligence scaled by high-performance compute.</p>
-
-            <p>With a nationwide factory and data center network, it enables us to build a redundant and automated supply chain in the USA.</p>
-
-            <p>We build, sell, and lease computers. Computers with extremely high performance accelerated. We do this in our Factory-Datacenters.</p>
-
-            <p>With Factory-Datacenters, we unlock Factory College Towns, where we build, sell, and lease housing, educational and research facilities, factories, parks, roads, and everything else included in Factory College Towns.</p>
-
-            <p>Mission of 1 Billion Humans Fed, Housed, and Empowered to Live, Work, Play, Love, Learn, and Pay-it-forward in our towns by 2050.</p>
-
-            <p>We see a world where multiple groups like us come together to solve these global issues impacting basic human needs.</p>
-
-        <h2>What are our core values?</h2>
-
-            <p>Our mission is simplified into meeting human needs based on theories summed up by Maslow's Hierarchy and Tony Robbins 6 Human Needs.</p>
-
-            <p>Maslow's Hierarchy</p>
-        
-            <p><u>Physiological:</u> air, water, food, shelter, sleep, clothing, reproduction.</p>
-
-            <p><u>Safety:</u> personal security, employment, resources, health, prosperity.</p>
-
-            <p><u>Love and belonging:</u> friendship, intimacy, family, sense of connection.</p>
-
-            <p><u>Esteem:</u> respect, self-esteem, status, recognition, strength, freedom.</p>
-
-            <p><u>Self-actualization:</u> desire to become the most that one can be.</p>
-
-            <p>These are the core values that we look to for inspiration to empower humans to reach self-actualization. Each value is followed by the Tony Robbins Human Need.</p>
-
-            <p>Live Happy, Healthy, and Selflessly Abundant with Faith: <u>Certainty</u></p>
-
-            <p>Work with Passion to Solve Problems and Serve Others: <u>Significance</u></p>
-
-            <p>Play Hard: <u>Uncertainty/Variety</u></p>
-
-            <p>Love Harder: <u>Love/Connection</u></p>
-
-            <p>Learn and Grow through Curiosity: <u>Growth</u></p>
-
-            <p>Pay-it-forward with Gratitude: <u>Contribution</u></p>
-
-            <p>Get in Touch (<a href="mailto:chubbydotai@chubby.ai">chubbydotai@chubby.ai</a>)</p>
-
-        <h2>Step-by-Step</h2>
-
-            <p>We have a 3,500 sq ft building and roughly 6,500 sq ft building side-by-side.</p>
-
-            <p>Our first efforts go toward assembling compute that we sell for a profit.</p>
-
-            <p>We assemble our own compute and pre-lease for the prototype data center as we have our fiber run.</p>
-
-            <p>As more funding comes in or sales of compute, we build out more.</p>
-
-            <p>We continue to scale over time using this Factory College Town concept of more manufacturing capacity, more educational research facilities, and more town infrastructure including farm land.</p>
-
-            <p>We have an initial Chubby Center Factory-Datacenter under construction (Michigan) and are scouting 10 pilot locations around the USA, with 100+ more breaking ground as those come online. Full deployment of Chubby MOM (1,000 Factory-Datacenters) + a network of 1,000 Chubby Town Factory College Towns producing 1 million homes annually by 2030 (oversimplified example: 1,000x1,000 = 1 million housing units).</p>
-
-        <h2>How does Chubby.Ai help 1 billion humans by 2050 when it's only helping 1 million by 2030?</h2>
-
-            <p>1 million housing units produced in 2030 with our supply chain.</p>
-
-            <p>50 million housing units produced in 2035 with our supply chain accelerated with Chubby MOM + Chubby Town supply chain compounding annually.</p>
-
-            <p>15 years multiplied by 50 million = 750 million housing units with a minimum of 1 billion humans fed, housed, and empowered.</p>
-
-            <p>Perfect scaling is unlikely, here is simply doubling our capacity annually in 2031 (2 million new homes), 2032 (4 million new homes), 2033 (8 million new homes), 2034 (16 million new homes), and 2035 (32 million new homes).</p>
-
-            <p>This can be achieved with AI, automation, humanoid robots, and humans working together to make it happen.</p>
-
-            <p>$100 Trillion is taking 1 billion humans and multiplying that by $100,000. It is the theoretical infrastructure value on a human being part of a Factory College Town that we build.</p>
-
-        <h2>How can you help?</h2>
-
-            <p>Join the mission, help us build. We have a place for anyone that is willing to put in the work.</p>
-
-            <p>Share the mission, we need people to know about our purpose.</p>
-
-            <p>Invest in the mission.</p>
-
-        <h2>The 6-Part One-Page Plan</h2>
-
-            <table class="table-responsive">
-                <tr>
-                    <th width = "33%">Inspiration</th>
-                    <th width = "34%">Innovation</th>
-                    <th width = "33%">Experience</th>
-                </tr>
-                <tr>
-                    <td>Abundance All-Round.<br> <br> Inspired to action after seeing ultimate human suffering over basic needs not being met.</td>
-                    <td>Chubby Computer: PCs, Workstations, & Servers<br> <br> Chubby Center: Factory-Datacenters<br> <br> Chubby House: Human + Robotic Fabricated Homes<br> <br> Chubby Town: Factory College Towns<br> <br> Chubby MOM: AI + Manufacturing 1GW collaborative supercomputer</td>
-                    <td><u>Humans</u> fed,<br> housed,<br> and empowered to<br> live,<br> work,<br> play,<br> love,<br> learn,<br> and pay-it-forward.</td>
-                </tr>
-                <tr>
-                    <th><br><br>Resources</th>
-                    <th><br><br>Business Model</th>
-                    <th><br><br>Milestones</th>
-                </tr>
-                <tr>
-                    <td>Raw Materials<br> <br> Raw Land<br> <br> Raw Humans</td>
-                    <td>Compute + Real Estate<br> <br>  We are Manufacturing it, Selling it, and Leasing it.</td>
-                    <td>Chubby Computers Shipping<br> <br> Chubby Center Prototype + Scaling<br> <br> Chubby House Prototype + Mass Production<br> <br> Chubby Town Prototype + Scaling<br> <br> Chubby MOM made up of 1,000+ Chubby Centers</td>
-                </tr>
-            </table>
-
-        <h2>Is this risky?</h2>
-
-            <p>Of course, it's a bet on AI and humanity collaborating together for an abundant future. AI could plateau, global war could break out, global disease could happen, anything could happen, but this is having a simple faith that humanity will continue to advance through technological innovations.</p>
-
-            <p>The failures of the past, did not have this mission or timing. Plain and simple. We are betting on the idea that, data centers and compute have continued to grow in demand for the entirety of the internet, AI has accelerated this. Amazon makes 60% of their operating profits from their data center business, yet many people believe they are an online shopping business first. The top 6 companies by market capitalization in the USA are data center or compute companies in one form or another.</p>
-
-        <h2>Ready to Connect?</h2>
-
-            <p>Whether you're a community member, client, collaborator, cofounder, investor, or any other innovator, let's build the future together.</p>
-
-            <p>Small to Large Enterprises: Deploy AI where you need it. Partner with us to build your manufacturing facilities in the USA.</p>
-
-            <p>Colleges, Universities, and all other Post-Secondary Training Institutions: Partner with us to expand your facilities to new areas.</p>
-
-            <p>Humans seeking Careers: Join our mission.</p>
-
-            <p>Cofounder-Investors: Open to all, ideal candidates are currently in the education, construction, real estate, manufacturing, infrastructure, tech, or similar industries.</p>
-
-            <p>If you are human and this resonates with you, reach out and tell us why.</p>
-
-        <h3>We are seeking billionaires, not people with a billion dollars, humans that seek to help feed, house, and empower a billion humans.</h3>
-        
-            <p>Get in Touch (<a href="mailto:chubbydotai@chubby.ai">chubbydotai@chubby.ai</a>)</p>
-        
-            <hr>
-
-        <i>
-            <p>Chubby.Ai</p>
-
-            <p>Abundance All-Round.</p>
-
-            <p>2025 Chubby.Ai All rights reserved.</p>
-        </i>
+<div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#top"><div class="logo"></div>
+      <div><strong>Chubby.Ai</strong><br><span class="muted" style="font-size:12px">Abundance All‑Round</span></div></a>
+    <div style="display:flex; gap:10px; flex-wrap:wrap">
+      <a class="btn" href="#shop">Shop computers</a>
+      <a class="btn ghost" href="#mission">Mission & Vision</a>
+      <a class="btn ghost" href="#investor">Investor corner</a>
     </div>
+  </nav>
 
+  <header class="hero">
+    <div class="card">
+      <div style="display:flex; gap:8px; flex-wrap:wrap">
+        <span class="pill">Chubby.Computer</span>
+        <span class="pill">Quarter Chubby</span>
+        <span class="pill">Chubby Box</span>
+      </div>
+      <h1>The AI computers people brag about.</h1>
+      <p class="lead">Quarter Chubby (5090 AI PC), Chubby Box (4‑GPU workstation), and 8‑GPU server — backed by <b>world-class service</b> and our modular <b>Chubby.Center</b>. Built to train, fine‑tune, and ship AI in the real world.</p>
+      <div class="cta-row">
+        <a class="btn" href="#shop">Buy / Request quote</a>
+        <a class="btn ghost" href="#why">Why Chubby.Computer?</a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="kpi"><span class="muted">Ai PC</span><b>Quarter Chubby (1-GPU)</b></div>
+      <div class="kpi"><span class="muted">Ai Workstation</span><b>Chubby Box (4‑GPU)</b></div>
+      <div class="kpi"><span class="muted">Ai Server</span><b>8‑GPU</b></div>
+      <div class="kpi"><span class="muted">Edge Ai footprint</span><b>1&nbsp;MW Chubby Centers</b></div>
+    </div>
+  </header>
+
+  <section id="shop" class="section">
+    <div class="card computer-section">
+      <div class="computer-header">
+        <h2 class="computer-title">Chubby.Computer</h2>
+        <p class="computer-subtitle">AI computers that are lightning fast and supported with white-gloves.</p>
+      </div>
+      
+      <div class="grid cols-3">
+        <div class="computer-card">
+          <div class="computer-decor"></div>
+          <h3 class="computer-heading">Quarter Chubby — 5090 AI PC</h3>
+          <div class="limited-badge">20 Unit LIMITED DROP</div>
+          <div class="computer-price">$10,000 Founder's Edition</div>
+          <p class="muted small computer-desc">Mass production: $5k & $10k models coming in 2026.</p>
+          <div class="computer-pros">
+            <span>AMD Ryzen 9950X3D CPU</span><span>NVIDIA 5090 32GB VRAM</span><span>128GB System RAM</span><span>Dual Boot 8TB NVMe with Windows 11 Pro & Ubuntu 24.04</span> <span>4TB NVMe gen 5</span><span>Quiet thermals</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="mailto:chubbydotai@chubby.ai?subject=Quarter%20Chubby%20Order">Order / Quote</a>
+            <a class="btn ghost" href="#why">See why</a>
+          </div>
+        </div>
+        <div class="computer-card computer-card-green">
+          <div class="computer-decor-green"></div>
+          <h3 class="computer-heading-green">Chubby Box — 4‑GPU Workstation</h3>
+          <div class="limited-badge limited-badge-green">20 Unit LIMITED DROP</div>
+          <div class="computer-price-green">$100,000 Founder's Edition</div>
+          <p class="muted small computer-desc">Mass production: $50k & $100k models coming in 2026.</p>
+          <div class="computer-pros computer-pros-green">
+            <span>AMD Threadripper Pro 9995WX CPU</span><span>4× NVIDIA 6000 PRO 96GB GPUs</span><span>384GB GPU VRAM and 1TB of System RAM</span><span>4x 4TB PCIe Gen5.0 NVMe RAID</span><span>Quiet / office‑ready</span><span>Local support</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="mailto:chubbydotai@chubby.ai?subject=Chubby%20Box%20Order">Order / Quote</a>
+            <a class="btn ghost" href="#why">See why</a>
+          </div>
+        </div>
+        <div class="computer-card">
+          <div class="computer-decor-blue"></div>
+          <h3 class="computer-heading-blue">8‑GPU Server — AI Cluster Node</h3>
+          <div class="computer-price-blue">Request a quote</div>
+          <p class="muted small computer-desc">Reference‑design architecture with our thermal, power, and rack tweaks.</p>
+          <div class="computer-pros computer-pros-blue">
+            <span>AMD EPYC CPU</span><span>8× GPUs</span><span>800GbE</span><span>Data‑center grade</span><span>Rack kits</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="mailto:chubbydotai@chubby.ai?subject=8-GPU%20Server%20Quote">Request Quote</a>
+            <a class="btn ghost" href="#investor">Investor corner</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="investor" class="section">
+    <div class="cta-row" style="justify-content: center; margin-bottom: 20px;">
+      <button id="investorToggle" class="btn toggle-large" onclick="toggleInvestorCorner()">Show Investor Corner</button>
+    </div>
+    
+    <div id="investorContent" style="display: none;">
+      <div class="card">
+        <h2>Investor corner</h2>
+        <div class="grid">
+          <div>
+            <div class="highlight" style="background: linear-gradient(135deg, var(--glow1), var(--glow2)); color: #001018; padding: 24px; border-radius: var(--card-radius); margin-bottom: 20px; text-align: center; box-shadow: var(--shadow);">
+              <h2 style="margin: 0 0 16px; font-size: 28px; color: #001018;">🚀 SEED ROUND HIGHLIGHTS</h2>
+              <div class="grid cols-3" style="gap: 20px;">
+                <div>
+                  <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">SHARE PRICE</div>
+                  <div style="font-size: 32px; font-weight: 900; color: #001018;">$10</div>
+                  <div style="font-size: 12px; opacity: 0.8;">per share</div>
+                </div>
+                <div>
+                  <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">PRE-MONEY</div>
+                  <div style="font-size: 32px; font-weight: 900; color: #001018;">$5M</div>
+                  <div style="font-size: 12px; opacity: 0.8;">valuation</div>
+                </div>
+                <div>
+                  <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">POST-MONEY</div>
+                  <div style="font-size: 32px; font-weight: 900; color: #001018;">$15M</div>
+                  <div style="font-size: 12px; opacity: 0.8;">valuation</div>
+                </div>
+              </div>
+              <div style="margin-top: 16px; font-size: 14px; opacity: 0.8;">
+                <strong>$10M investment</strong> • <strong>1M shares</strong> • <strong>Regular shares</strong>
+              </div>
+            </div>
+            
+            <h3>Seed terms (quick)</h3>
+            <ul>
+              <li>$10M for 1,000,000 shares @ $10/share</li>
+              <li>Pre‑Money: $5M; Post‑Money: $15M</li>
+              <li>10,000,000 authorized shares; ESOP 2,500,000 shares (grants 100k/yr)</li>
+              <li>Founders 500,000</li>
+              <li><strong>Founders get 10:1 super voting Class B shares</strong></li>
+            </ul>
+            <p class="small muted">Seed Summary. See Cap Table (vesting‑aware) table for more details on future rounds.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Cap Table (vesting‑aware)</h3>
+          <div class="table-wrap" style="margin-bottom:10px">
+            <table id="capTable">
+              <thead>
+                <tr>
+                  <th>Round</th>
+                  <th>Year</th>
+                  <th>Price / Share</th>
+                  <th>New Shares</th>
+                  <th>Pre‑Money Shares</th>
+                  <th>Pre‑Money</th>
+                  <th>Post‑Money</th>
+                  <th>Cum Shares O/S</th>
+                  <th>Founder Voting %</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="note">*All years are estimated. Seed scheduled in <b>2025</b> with 500k founder's shares pre‑money; Series F(IPO pre-split) price solves to exactly $100T post‑money in 2045. <strong>Founders maintain 10:1 super voting power on their shares.</strong></div>
+          
+          <div class="note" style="margin-top: 10px; padding: 10px; background: var(--soft); border-radius: 8px;">
+            <strong>Cap Table Abbreviations:</strong><br>
+            <strong>O/S</strong> = Outstanding<br>
+            <strong>Pre‑Money</strong> = Company value before investment<br>
+            <strong>Post‑Money</strong> = Company value after investment<br>
+            <strong>Founder Voting %</strong> = Founder voting power including 10:1 super voting rights
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Founder Voting Power Analysis</h3>
+          <p><strong>10:1 Super Voting Shares:</strong> Founders receive 10 votes per share, providing enhanced control despite dilution.</p>
+          <div class="grid cols-3">
+            <div>
+              <h4>Pre-Seed (August 2025)</h4>
+              <p>Founders: 500k shares<br>Voting Power: 5M votes<br>Total Votes: 5M<br>Control: <strong>100%</strong></p>
+            </div>
+            <div>
+              <h4>2026 (Series A)</h4>
+              <p>Founders: 500k shares<br>Voting Power: 5M votes<br>Total Votes: 7M<br>Control: <strong>~71%</strong></p>
+            </div>
+            <div>
+              <h4>Final Dilution (2053)</h4>
+              <p>*Founders: 500k shares<br>Voting Power: 5M votes<br>Total Votes: 14.5M<br>Control: <strong>~34%</strong></p>
+            </div>
+          </div>
+          <p class="small muted">*Founders include 50/50 split between Anthony J & Anthony S. Voting percentages shown in the Cap Table above reflect the founder's effective voting power including 10:1 super voting rights.</p>
+        </div>
+
+        <h3 style="margin-top:18px">Vesting view (2025‑2053 horizon)</h3>
+        <div class="table-wrap">
+          <table id="vestingTable">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Founders Vested Δ</th>
+                <th>Founders Cum</th>
+                <th>ESOP Granted</th>
+                <th>ESOP Vested Δ</th>
+                <th>ESOP Vested Cum</th>
+                <th>O/S Pre‑Rounds (Vested‑only)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="note">ESOP grants 100k/year from 2025-2049 (2.5M total). Each grant vests 25% per year over four years starting the <b>next</b> year. All 3M shares fully vested by 2053.</p>
+        
+        <div class="note" style="margin-top: 10px; padding: 10px; background: var(--soft); border-radius: 8px;">
+          <strong>Abbreviations:</strong><br>
+          <strong>Cum</strong> = Cumulative<br>
+          <strong>O/S</strong> = Outstanding<br>
+          <strong>Δ</strong> = Delta (change from previous year)<br>
+          <strong>Pre‑Money</strong> = Company value before investment<br>
+          <strong>Post‑Money</strong> = Company value after investment
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacer for proper navigation scrolling -->
+  <div id="investor-spacer" style="height: 100px;"></div>
+
+  <section id="mission" class="section">
+    <div class="cta-row" style="justify-content: center; margin-bottom: 20px;">
+      <button id="missionToggle" class="btn ghost toggle-large" onclick="toggleMissionVision()" style="border: 2px solid var(--glow2); color: var(--glow2);">🌟 Show Mission & Vision</button>
+    </div>
+    
+    <div id="missionContent" style="display: none;">
+      <div class="mission-header">
+        <div class="mission-logo">
+          <div class="mission-logo-circle"></div>
+          <h1 class="mission-title">Chubby.Ai</h1>
+        </div>
+        <p class="mission-subtitle">Abundance All-Round.</p>
+      </div>
+      
+      <div class="grid cols-2 section-grid-2">
+        <div class="card mission-card">
+          <div class="mission-decor"></div>
+          <h2 class="mission-heading">Mission</h2>
+          <p class="mission-text">Help feed, house, and self-actualize humans.</p>
+        </div>
+        <div class="card mission-card-green">
+          <div class="mission-decor-green"></div>
+          <h2 class="mission-heading-green">Vision</h2>
+          <p class="mission-text">1 Billion humans fed, housed, and empowered by 2050.</p>
+        </div>
+      </div>
+
+      <h2 class="section-heading">What problem exists?</h2>
+      <div class="grid cols-2 section-grid">
+        <div class="card problem-card">
+          <div class="problem-decor"></div>
+          <h3 class="problem-heading">Housing Crisis</h3>
+          <p class="problem-text">750,000 to 1 million homeless humans in the USA on a given night. USA market short 4 million homes in 2024.</p>
+        </div>
+        <div class="card problem-card-orange">
+          <div class="problem-decor-orange"></div>
+          <h3 class="problem-heading-orange">Manufacturing Gap</h3>
+          <p class="problem-text">Major push for domestic USA manufacturing as AI/humanoid robotics race with China accelerates.</p>
+        </div>
+        <div class="card problem-card-orange2">
+          <div class="problem-decor-orange2"></div>
+          <h3 class="problem-heading-orange2">Global Infrastructure</h3>
+          <p class="problem-text">2 billion humans without adequate toilets and clean water. 2 billion more people in next 25 years.</p>
+        </div>
+        <div class="card problem-card-orange3">
+          <div class="problem-decor-orange3"></div>
+          <h3 class="problem-heading-orange3">Education Gap</h3>
+          <p class="problem-text">Half as many post-secondary institutions as school districts. No major push for higher education at scale.</p>
+        </div>
+      </div>
+
+      <h2 class="section-heading">What is the Chubby.Ai solution?</h2>
+      <div class="card solution-highlight">
+        <div class="solution-decor1"></div>
+        <div class="solution-decor2"></div>
+        <p class="solution-text"><strong>Chubby.MOM:</strong> A network of 1,000 Chubby Centers — 1MW EDGE Factory-Datacenters, allowing us to seed 1,000 one-hundred to two-thousand acre Chubby Towns — Factory College Towns around the USA.</p>
+      </div>
+
+      <div class="grid cols-3 section-grid-3">
+        <div class="card kpi-enhanced">
+          <div class="kpi-decor"></div>
+          <h3 class="kpi-heading">Chubby Centers</h3>
+          <p class="kpi-text">1,000 Factory-Datacenters nationwide</p>
+        </div>
+        <div class="card kpi-enhanced-green">
+          <div class="kpi-decor-green"></div>
+          <h3 class="kpi-heading-green">Chubby.Town</h3>
+          <p class="kpi-text">Factory College Towns with housing & education</p>
+        </div>
+        <div class="card kpi-enhanced-blue">
+          <div class="kpi-decor-blue"></div>
+          <h3 class="kpi-heading-blue">Annual Output</h3>
+          <p class="kpi-text">1 million homes by 2030</p>
+        </div>
+      </div>
+
+      <h2 class="section-heading">Core Values</h2>
+      <div class="grid cols-2 section-grid">
+        <div>
+          <h3 class="core-heading">Maslow's Hierarchy</h3>
+          <ul class="core-list">
+            <li><strong>Physiological:</strong> air, water, food, shelter, sleep, clothing, reproduction</li>
+            <li><strong>Safety:</strong> personal security, employment, resources, health, prosperity</li>
+            <li><strong>Love & Belonging:</strong> friendship, intimacy, family, sense of connection</li>
+            <li><strong>Esteem:</strong> respect, self-esteem, status, recognition, strength, freedom</li>
+            <li><strong>Self-Actualization:</strong> desire to become the most that one can be</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="core-heading-green">Tony Robbins 6 Human Needs</h3>
+          <ul class="core-list">
+            <li><strong>Live Happy:</strong> Certainty</li>
+            <li><strong>Work with Passion:</strong> Significance</li>
+            <li><strong>Play Hard:</strong> Uncertainty/Variety</li>
+            <li><strong>Love Harder:</strong> Love/Connection</li>
+            <li><strong>Learn & Grow:</strong> Growth</li>
+            <li><strong>Pay-it-Forward:</strong> Contribution</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card framework-highlight">
+        <h2 class="framework-title">The 6-Part One-Page Plan</h2>
+        <div class="grid cols-3 framework-grid">
+          <div class="framework-item">
+            <h3 class="framework-heading">Inspiration</h3>
+            <p class="framework-text">Abundance All-Round.<br>Inspired to action after seeing ultimate human suffering over basic needs not being met.</p>
+          </div>
+          <div class="framework-item">
+            <h3 class="framework-heading-green">Innovation</h3>
+            <p class="framework-text">Chubby.Computer: PCs, Workstations, & Servers<br>Chubby.Center: Factory-Datacenters<br>Chubby.House: Human + Robotic Fabricated Homes<br>Chubby.Town: Factory College Towns<br>Chubby.MOM: AI + Manufacturing 1GW collaborative supercomputer</p>
+          </div>
+          <div class="framework-item">
+            <h3 class="framework-heading-blue">Experience</h3>
+            <p class="framework-text">Humans fed, housed, and empowered to live, work, play, love, learn, and pay-it-forward.</p>
+          </div>
+        </div>
+        <div class="grid cols-3 framework-grid">
+          <div class="framework-item">
+            <h3 class="framework-heading">Resources</h3>
+            <p class="framework-text">Raw Materials<br>Raw Land<br>Raw Humans</p>
+          </div>
+          <div class="framework-item">
+            <h3 class="framework-heading-green">Business Model</h3>
+            <p class="framework-text">Compute + Real Estate<br>We are Manufacturing it, Selling it, and Leasing it.</p>
+          </div>
+          <div class="framework-item">
+            <h3 class="framework-heading-blue">Milestones</h3>
+            <p class="framework-text">Chubby.Computer Shipping<br>Chubby.Center Prototype + Scaling<br>Chubby.House Prototype + Mass Production<br>Chubby.Town Prototype + Scaling<br>Chubby.MOM made up of 1,000+ Chubby Centers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h2 class="cta-title">Ready to Connect?</h2>
+        <p class="cta-text">Whether you're a community member, client, collaborator, cofounder, investor, or any other innovator, let's build the future together.</p>
+        <div class="cta-row" style="justify-content: center;">
+          <a class="btn" href="mailto:chubbydotai@chubby.ai">Get in Touch</a>
+          <a class="btn ghost" href="#investor">View Investor Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="section">
+    <div class="card">
+      <h2>Why Chubby?</h2>
+      <div class="grid cols-3">
+        <div>
+          <h3>Built for Enterprise or Everyone</h3>
+          <p>We operate <span class="highlight">Chubby.Center</span> — modular 1&nbsp;MW Factory‑Datacenters that bring compute close to you. Faster delivery, local service.</p>
+        </div>
+        <div>
+          <h3>Designed for real workloads</h3>
+          <p>Fine‑tuning, retrieval, 3D, video, simulation. Thermals, acoustics, and firmware tuned for long‑haul productivity.</p>
+        </div>
+        <div>
+          <h3>Scale when you're ready</h3>
+          <p>Start with a PC → add workstations → burst to servers → stitch into campus clusters. Same team, same support.</p>
+        </div>
+      </div>
+      <div class="cta-row"><a class="btn" href="mailto:chubbydotai@chubby.ai">Talk to engineering</a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="grid cols-3">
+      <div>
+        <h3>Chubby.Ai</h3>
+        <p class="muted">Abundance All‑Round.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href="mailto:chubbydotai@chubby.ai">chubbydotai@chubby.ai</a></p>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <p class="muted">© 2025 Chubby.Ai. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const YEARS = 29; // 29-year horizon from 2025-2053
+const FOUNDERS_TOTAL = 500_000;
+const ESOP_TOTAL = 2_500_000;
+const ESOP_PER_YEAR = 100_000;
+const ESOP_TRANCHE = ESOP_PER_YEAR / 4; // 25k
+const F_POST_TARGET = 100_000_000_000_000; // $100T
+
+// Round schedule: Using actual years instead of relative years
+const rounds = [
+  { name:"Seed",     year:2025, price:10,       newShares:1_000_000, fixed:true },
+  { name:"Series A", year:2026, price:100,      newShares:1_000_000, fixed:true },
+  { name:"Series B", year:2027, price:1_000,    newShares:1_000_000, fixed:true },
+  { name:"Series C", year:2028, price:10_000,   newShares:1_000_000, fixed:true },
+  { name:"Series D", year:2029, price:100_000,  newShares:1_000_000, fixed:true },
+  { name:"Series E", year:2035, price:1_000_000,newShares:1_000_000, fixed:true },
+  { name:"Series F", year:2045, price:null,     newShares:1_000_000, fixed:false, postTarget:F_POST_TARGET },
+];
+
+function foundersVestedCum(year){
+  // Vesting started August 17, 2024
+  // At 1-year mark (Aug 17, 2025): 125k shares vested
+  // 2024: 0 shares (vesting hasn't started yet)
+  // 2025: 125k shares (1 year of vesting)
+  // 2026: 250k shares (125k + 125k)
+  // 2027: 375k shares (125k + 125k + 125k)
+  // 2028+: 500k shares (125k + 125k + 125k + 125k) - fully vested
+  if(year < 2025) return 0;
+  if(year === 2025) return 500_000; // 1 year of vesting
+  if(year === 2026) return 500_000; // 125k + 125k
+  if(year === 2027) return 500_000; // 125k + 125k + 125k
+  if(year === 2028) return 500_000; // 125k + 125k + 125k + 125k
+  return 500_000; // fully vested from 2028 onwards
+}
+
+function esopGranted(year){
+  // 100k per year from 2025-2049, capped at 25 grants (2.5M total)
+  return (year >= 2025 && year <= 2049) ? ESOP_PER_YEAR : 0;
+}
+
+function esopVestedCum(year){
+  // Sum over all grant years g < year of ESOP_TRANCHE * min(year - g, 4)
+  let cum = 0;
+  for(let g=2025; g<=2049; g++){
+    if(g >= year) break; // grants vest starting next year
+    const installments = Math.min(Math.max(year - g, 0), 4);
+    cum += ESOP_TRANCHE * installments;
+  }
+  // Cap at total ESOP and ensure we don't exceed the total
+  return Math.min(cum, ESOP_TOTAL);
+}
+
+function buildVestingTable(){
+  const tbody = document.querySelector('#vestingTable tbody');
+  tbody.innerHTML = "";
+  
+  console.log('=== VESTING TABLE ===');
+  console.log('Constants:', { YEARS, FOUNDERS_TOTAL, ESOP_TOTAL, ESOP_PER_YEAR, ESOP_TRANCHE });
+  
+  let prevFounders = 0, prevEsop = 0;
+  for(let y=2025; y<=2053; y++){
+    const fCum = foundersVestedCum(y);
+    const fDelta = fCum - prevFounders;
+    prevFounders = fCum;
+
+    const grant = esopGranted(y);
+    const eCum = esopVestedCum(y);
+    const eDelta = eCum - prevEsop;
+    prevEsop = eCum;
+
+    const preRoundsVested = fCum + eCum;
+    
+    if (y <= 2044) { // Log first 20 years for debugging
+      console.log(`Y${y}:`, {
+        foundersVested: fCum,
+        foundersDelta: fDelta,
+        esopGranted: grant,
+        esopVested: eCum,
+        esopDelta: eDelta,
+        totalVested: preRoundsVested
+      });
+    }
+    
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${y}</td>
+      <td>${fDelta.toLocaleString()}</td>
+      <td>${fCum.toLocaleString()}</td>
+      <td>${grant.toLocaleString()}</td>
+      <td>${eDelta.toLocaleString()}</td>
+      <td>${eCum.toLocaleString()}</td>
+      <td>${preRoundsVested.toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+function simulateCapTable(){
+  const tbody = document.querySelector('#capTable tbody');
+  tbody.innerHTML = "";
+
+  let investorSharesCum = 0;
+  
+  console.log('=== CAP TABLE SIMULATION ===');
+  console.log('Constants:', { YEARS, FOUNDERS_TOTAL, ESOP_TOTAL, ESOP_PER_YEAR, ESOP_TRANCHE, F_POST_TARGET });
+
+  for(const r of rounds){
+    const y = r.year; // Use the actual year directly
+    // Pre‑round shares include vested founders + vested ESOP + prior investor shares
+    const preShares = foundersVestedCum(y) + esopVestedCum(y) + investorSharesCum;
+
+    // Price: fixed or back‑solve for F to hit postMoney target
+    let price;
+    if (r.fixed) {
+      price = r.price;
+    } else {
+      // For Series F, solve: postMoney = price * (preShares + newShares) = $100T
+      // Therefore: price = $100T / (preShares + newShares)
+      price = r.postTarget / (preShares + r.newShares);
+    }
+    
+    const preMoney = price * preShares;
+    const raise = price * r.newShares;
+    const postMoney = preMoney + raise;
+    investorSharesCum += r.newShares;
+    const cumShares = preShares + r.newShares;
+
+    console.log(`${r.name} (Y${y}):`, {
+      preShares,
+      newShares: r.newShares,
+      price: formatPrice(price),
+      preMoney: Math.round(preMoney),
+      raise: Math.round(raise),
+      postMoney: Math.round(postMoney),
+      cumShares
+    });
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${r.name}</td>
+      <td>Y${y}</td>
+      <td>$${formatPrice(price)}</td>
+      <td>${r.newShares.toLocaleString()}</td>
+      <td>${preShares.toLocaleString()}</td>
+      <td>$${Math.round(preMoney).toLocaleString()}</td>
+      <td>$${Math.round(postMoney).toLocaleString()}</td>
+      <td>${cumShares.toLocaleString()}</td>
+      <td>${calculateFounderVotingPercentage(y, cumShares).toFixed(2)}%</td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  const note = document.createElement('tr');
+  note.innerHTML = `<td colspan="9" style="text-align:left; color:#a9b0c3">
+    <span class="badge">Note</span> Pre‑money shares are <b>vested‑only</b> founders + vested ESOP + all prior investor shares.
+    Series F price is computed so post‑money equals exactly $100T.
+  </td>`;
+  tbody.appendChild(note);
+}
+
+// Helper function to format prices consistently
+function formatPrice(price) {
+  if (price >= 1_000_000) {
+    return (price / 1_000_000).toFixed(1) + 'M';
+  } else if (price >= 1_000) {
+    return (price / 1_000).toFixed(1) + 'K';
+  } else {
+    return price.toFixed(2);
+  }
+}
+
+function calculateFounderVotingPercentage(year, totalShares) {
+  const foundersVested = foundersVestedCum(year);
+  const foundersVotingPower = foundersVested * 10; // 10:1 super voting power
+  const otherShares = totalShares - foundersVested; // All other shares have 1:1 voting power
+  const totalVotingPower = foundersVotingPower + otherShares; // Total voting power in the company
+  return (foundersVotingPower / totalVotingPower) * 100;
+}
+
+function toggleInvestorCorner() {
+  const investorContent = document.getElementById('investorContent');
+  const investorToggle = document.getElementById('investorToggle');
+  if (investorContent.style.display === 'none') {
+    investorContent.style.display = 'block';
+    investorToggle.textContent = 'Hide Investor Corner';
+    investorToggle.className = 'btn toggle-small';
+  } else {
+    investorContent.style.display = 'none';
+    investorToggle.textContent = 'Show Investor Corner';
+    investorToggle.className = 'btn toggle-large';
+  }
+}
+
+function toggleMissionVision() {
+  const missionContent = document.getElementById('missionContent');
+  const missionToggle = document.getElementById('missionToggle');
+  if (missionContent.style.display === 'none') {
+    missionContent.style.display = 'block';
+    missionToggle.textContent = 'Hide Mission & Vision';
+    missionToggle.className = 'btn ghost toggle-small';
+  } else {
+    missionContent.style.display = 'none';
+    missionToggle.textContent = '🌟 Show Mission & Vision';
+    missionToggle.className = 'btn ghost toggle-large';
+  }
+}
+
+buildVestingTable();
+simulateCapTable();
+
+// Smooth scrolling with offset for sticky navigation
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all navigation links that start with #
+  const navLinks = document.querySelectorAll('a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      
+      // Handle "top" link - scroll to very top of page
+      if (targetId === 'top') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        return;
+      }
+      
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate the offset for the sticky navigation (approximately 80px)
+        const navHeight = 80;
+        const targetPosition = targetElement.offsetTop - navHeight;
+        
+        // Smooth scroll to the target position
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+</script>
 </body>
-
 </html>
