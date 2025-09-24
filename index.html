@@ -63,9 +63,9 @@ p{margin:.35em 0}
 .muted{color:var(--muted)}
 .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border:1px solid var(--border);
      border-radius:999px; color:var(--muted); font-weight:650; font-size:14px}
-.table-wrap{overflow:auto; border:1px solid var(--border); border-radius:12px}
-table{width:100%; border-collapse:collapse}
-th,td{padding:10px 8px; border-bottom:1px solid var(--border); text-align:right; white-space:nowrap}
+.table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:12px; -webkit-overflow-scrolling: touch}
+table{width:100%; border-collapse:collapse; min-width: 600px}
+th,td{padding:10px 8px; border-bottom:1px solid var(--border); text-align:right; white-space:nowrap; font-size: 14px}
 th:first-child,td:first-child{text-align:left}
 .note{font-size:12px; color:var(--muted)}
 .badge{font-size:12px; padding:4px 8px; border:1px solid var(--border); border-radius:8px; color:var(--muted)}
@@ -89,6 +89,105 @@ th:first-child,td:first-child{text-align:left}
   .cols-2{grid-template-columns:1fr}
   .desktop-nav{display:none}
   .mobile-menu-btn{display:flex}
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .wrap{padding: 20px}
+  .nav{padding: 12px 20px 8px}
+  .hero{padding: 16px 0 8px}
+  .card{padding: 20px}
+  .section{margin: 28px 0}
+  
+  /* Typography adjustments */
+  h1{font-size: clamp(24px, 6vw, 36px)}
+  h2{font-size: clamp(18px, 4vw, 24px)}
+  h3{font-size: clamp(16px, 3vw, 20px)}
+  .lead{font-size: clamp(16px, 3vw, 18px)}
+  
+  /* Mission section mobile fixes */
+  .mission-title{font-size: clamp(28px, 8vw, 40px)}
+  .mission-subtitle{font-size: clamp(20px, 5vw, 24px)}
+  .mission-text{font-size: clamp(16px, 4vw, 20px)}
+  .mission-heading{font-size: clamp(20px, 5vw, 28px)}
+  
+  /* Computer section mobile fixes */
+  .computer-title{font-size: clamp(24px, 6vw, 32px)}
+  .computer-subtitle{font-size: clamp(16px, 4vw, 18px)}
+  .computer-heading{font-size: clamp(18px, 4vw, 22px)}
+  .computer-price{font-size: clamp(20px, 5vw, 26px)}
+  
+  /* Button and CTA adjustments */
+  .cta-row{flex-direction: column; gap: 8px}
+  .btn{padding: 10px 16px; font-size: 14px; width: 100%; text-align: center}
+  .btn.ghost{width: 100%}
+  .toggle-large{font-size: 18px; padding: 16px}
+  
+  /* Pill adjustments */
+  .pill{font-size: 12px; padding: 4px 8px}
+  
+  /* KPI adjustments */
+  .kpi{padding: 12px}
+  .kpi b{font-size: 16px}
+  
+  /* Framework grid mobile */
+  .framework-grid .cols-3{grid-template-columns: 1fr}
+  
+  /* Section grid adjustments */
+  .section-grid{gap: 16px}
+  .section-grid-2{gap: 20px}
+  .section-grid-3{gap: 20px}
+  
+  /* Footer adjustments */
+  .footer .cols-3{grid-template-columns: 1fr; gap: 16px; text-align: center}
+  
+  /* Table mobile adjustments */
+  .table-wrap{margin: 0 -20px; border-left: none; border-right: none; border-radius: 0}
+  table{min-width: 500px; font-size: 12px}
+  th,td{padding: 8px 6px; font-size: 12px}
+  
+  /* Computer pros mobile adjustments */
+  .computer-pros span{font-size: 12px; padding: 5px 7px}
+}
+
+@media (max-width: 480px) {
+  .wrap{padding: 16px}
+  .nav{padding: 10px 16px 6px}
+  .card{padding: 16px}
+  
+  /* Even smaller text on very small screens */
+  h1{font-size: clamp(20px, 8vw, 28px)}
+  h2{font-size: clamp(16px, 6vw, 20px)}
+  h3{font-size: clamp(14px, 5vw, 18px)}
+  
+  /* Mission adjustments for very small screens */
+  .mission-title{font-size: clamp(24px, 10vw, 32px)}
+  .mission-subtitle{font-size: clamp(18px, 7vw, 20px)}
+  .mission-text{font-size: clamp(14px, 5vw, 16px)}
+  
+  /* Computer section for very small screens */
+  .computer-title{font-size: clamp(20px, 8vw, 24px)}
+  .computer-heading{font-size: clamp(16px, 6vw, 18px)}
+  .computer-price{font-size: clamp(18px, 7vw, 22px)}
+  
+  /* Button adjustments */
+  .btn{padding: 8px 12px; font-size: 13px}
+  .toggle-large{font-size: 16px; padding: 12px}
+  
+  /* Pill adjustments */
+  .pill{font-size: 11px; padding: 3px 6px}
+  
+  /* KPI adjustments */
+  .kpi{padding: 10px}
+  .kpi b{font-size: 14px}
+  
+  /* Table adjustments for very small screens */
+  .table-wrap{margin: 0 -16px}
+  table{min-width: 400px; font-size: 11px}
+  th,td{padding: 6px 4px; font-size: 11px}
+  
+  /* Computer pros mobile adjustments */
+  .computer-pros span{font-size: 11px; padding: 4px 6px}
 }
 .highlight{background:linear-gradient(90deg, rgba(106,227,255,.15), rgba(160,255,159,.08)); border-radius:10px; padding:2px 6px}
 .price{font-weight:800; font-size:20px}
@@ -167,8 +266,8 @@ th:first-child,td:first-child{text-align:left}
 .computer-price-green{color:var(--glow2); font-weight:900; text-shadow:0 0 25px rgba(160,255,159,0.4); background:linear-gradient(135deg, var(--glow2), #a0ff9f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.5px}
 .computer-price-blue{color:var(--cta); font-weight:900; text-shadow:0 0 25px rgba(106,227,255,0.4); background:linear-gradient(135deg, var(--cta), var(--glow1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.5px}
 .computer-desc{margin-bottom:20px}
-.computer-pros{margin-bottom:20px}
-.computer-pros span{background:rgba(106,227,255,0.1); border:1px solid var(--glow1); border-radius:9px; padding:6px 8px; font-size:13px; color:var(--muted); display:inline-block; margin:2px}
+.computer-pros{margin-bottom:20px; display:flex; flex-wrap:wrap; gap:6px}
+.computer-pros span{background:rgba(106,227,255,0.1); border:1px solid var(--glow1); border-radius:9px; padding:6px 8px; font-size:13px; color:var(--muted); display:inline-block; margin:0; flex-shrink:0}
 .computer-pros-green span{background:rgba(160,255,159,0.1); border-color:var(--glow2)}
 .computer-pros-blue span{background:rgba(106,227,255,0.1); border-color:var(--cta)}
 .limited-badge{display:inline-block; background:linear-gradient(135deg, #ff6b6b, #ff8e8e); color:#ffffff; font-size:11px; font-weight:800; padding:6px 12px; border-radius:15px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px; box-shadow:0 3px 10px rgba(255,107,107,0.3)}
@@ -201,14 +300,12 @@ th:first-child,td:first-child{text-align:left}
     <div class="nav-links desktop-nav">
       <a class="btn" href="#shop">Shop computers</a>
       <a class="btn ghost" href="#mission">Mission & Vision</a>
-      <a class="btn ghost" href="#investor">Investor corner</a>
     </div>
     
     <!-- Mobile navigation -->
     <div class="mobile-nav" id="mobileNav">
       <a class="mobile-nav-link" href="#shop" onclick="closeMobileMenu()">Shop computers</a>
       <a class="mobile-nav-link" href="#mission" onclick="closeMobileMenu()">Mission & Vision</a>
-      <a class="mobile-nav-link" href="#investor" onclick="closeMobileMenu()">Investor corner</a>
     </div>
   </nav>
 
@@ -223,7 +320,7 @@ th:first-child,td:first-child{text-align:left}
       <p class="lead">Quarter Chubby (5090 AI PC), Chubby Box (4‑GPU workstation), and 8‑GPU server — backed by <b>world-class service</b> and our modular <b>Chubby.Center</b>. Built to train, fine‑tune, and ship AI in the real world.</p>
       <div class="cta-row">
         <a class="btn" href="#shop">Buy / Request quote</a>
-        <a class="btn ghost" href="#why">Why Chubby.Computer?</a>
+        <a class="btn ghost" href="#why">Why Chubby.Ai?</a>
       </div>
     </div>
     <div class="grid">
@@ -249,7 +346,7 @@ th:first-child,td:first-child{text-align:left}
           <div class="computer-price">$10,000 Founder's Edition</div>
           <p class="muted small computer-desc">Mass production: $5k & $10k models coming in 2026.</p>
           <div class="computer-pros">
-            <span>AMD Ryzen 9950X3D CPU</span><span>NVIDIA 5090 32GB VRAM</span><span>128GB System RAM</span><span>Dual Boot 8TB NVMe with Windows 11 Pro & Ubuntu 24.04</span> <span>4TB NVMe gen 5</span><span>Quiet thermals</span>
+            <span>AMD Ryzen 9950X3D CPU</span><span>NVIDIA 5090 32GB VRAM</span><span>128GB System RAM</span><span>Dual Boot 8TB NVMe</span> <span>Windows 11 Pro & Ubuntu 24.04</span> <span>4TB NVMe gen 5</span><span>Quiet thermals</span>
           </div>
           <div class="cta-row">
             <script async
@@ -261,7 +358,6 @@ th:first-child,td:first-child{text-align:left}
               publishable-key="pk_live_51Nv37QBdkh3G5306bcdyODysjYIyvzgZiQGBViErVhc6KC0YxI8thNi1hwvR4JZBmhU2ucZvcvLkWTAiWybJYVP500VSEuSfTj"
             >
             </stripe-buy-button>
-            <a class="btn ghost" href="#why">See why</a>
           </div>
         </div>
         <div class="computer-card computer-card-green">
@@ -283,7 +379,6 @@ th:first-child,td:first-child{text-align:left}
               publishable-key="pk_live_51Nv37QBdkh3G5306bcdyODysjYIyvzgZiQGBViErVhc6KC0YxI8thNi1hwvR4JZBmhU2ucZvcvLkWTAiWybJYVP500VSEuSfTj"
             >
             </stripe-buy-button>
-            <a class="btn ghost" href="#why">See why</a>
           </div>
         </div>
         <div class="computer-card">
@@ -296,150 +391,17 @@ th:first-child,td:first-child{text-align:left}
           </div>
           <div class="cta-row">
             <a class="btn" href="mailto:chubbydotai@chubby.ai?subject=8-GPU%20Server%20Quote">Request Quote</a>
-            <a class="btn ghost" href="#investor">Investor corner</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <section id="investor" class="section">
-    <div class="cta-row" style="justify-content: center; margin-bottom: 20px;">
-      <button id="investorToggle" class="btn toggle-large" onclick="toggleInvestorCorner()">Show Investor Corner</button>
-    </div>
-    
-    <div id="investorContent" style="display: none;">
-      <div class="card">
-        <h2>Investor corner</h2>
-        <div class="grid">
-          <div>
-            <div class="highlight" style="background: linear-gradient(135deg, var(--glow1), var(--glow2)); color: #001018; padding: 24px; border-radius: var(--card-radius); margin-bottom: 20px; text-align: center; box-shadow: var(--shadow);">
-              <h2 style="margin: 0 0 16px; font-size: 28px; color: #001018;">🚀 SEED ROUND HIGHLIGHTS</h2>
-              <div class="grid cols-3" style="gap: 20px;">
-                <div>
-                  <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">SHARE PRICE</div>
-                  <div style="font-size: 32px; font-weight: 900; color: #001018;">$10</div>
-                  <div style="font-size: 12px; opacity: 0.8;">per share</div>
-                </div>
-                <div>
-                  <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">PRE-MONEY</div>
-                  <div style="font-size: 32px; font-weight: 900; color: #001018;">$5M</div>
-                  <div style="font-size: 12px; opacity: 0.8;">valuation</div>
-                </div>
-                <div>
-                  <div style="font-size: 14px; opacity: 0.8; margin-bottom: 4px;">POST-MONEY</div>
-                  <div style="font-size: 32px; font-weight: 900; color: #001018;">$15M</div>
-                  <div style="font-size: 12px; opacity: 0.8;">valuation</div>
-                </div>
-              </div>
-              <div style="margin-top: 16px; font-size: 14px; opacity: 0.8;">
-                <strong>$10M investment</strong> • <strong>1M shares</strong> • <strong>Regular shares</strong>
-              </div>
-            </div>
-            
-            <h3>Seed terms (quick)</h3>
-            <ul>
-              <li>$10M for 1,000,000 shares @ $10/share</li>
-              <li>Pre‑Money: $5M; Post‑Money: $15M</li>
-              <li>10,000,000 authorized shares; ESOP 2,500,000 shares (grants 100k/yr)</li>
-              <li>Founders 500,000</li>
-              <li><strong>Founders get 10:1 super voting Class B shares</strong></li>
-            </ul>
-            <p class="small muted">Seed Summary. See Cap Table (vesting‑aware) table for more details on future rounds.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Cap Table (vesting‑aware)</h3>
-          <div class="table-wrap" style="margin-bottom:10px">
-            <table id="capTable">
-              <thead>
-                <tr>
-                  <th>Round</th>
-                  <th>Year</th>
-                  <th>Price / Share</th>
-                  <th>New Shares</th>
-                  <th>Pre‑Money Shares</th>
-                  <th>Pre‑Money</th>
-                  <th>Post‑Money</th>
-                  <th>Cum Shares O/S</th>
-                  <th>Founder Voting %</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div class="note">*All years are estimated. Seed scheduled in <b>2025</b> with 500k founder's shares pre‑money; Series F(IPO pre-split) price solves to exactly $100T post‑money in 2045. <strong>Founders maintain 10:1 super voting power on their shares.</strong></div>
-          
-          <div class="note" style="margin-top: 10px; padding: 10px; background: var(--soft); border-radius: 8px;">
-            <strong>Cap Table Abbreviations:</strong><br>
-            <strong>O/S</strong> = Outstanding<br>
-            <strong>Pre‑Money</strong> = Company value before investment<br>
-            <strong>Post‑Money</strong> = Company value after investment<br>
-            <strong>Founder Voting %</strong> = Founder voting power including 10:1 super voting rights
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Founder Voting Power Analysis</h3>
-          <p><strong>10:1 Super Voting Shares:</strong> Founders receive 10 votes per share, providing enhanced control despite dilution.</p>
-          <div class="grid cols-3">
-            <div>
-              <h4>Pre-Seed (August 2025)</h4>
-              <p>Founders: 500k shares<br>Voting Power: 5M votes<br>Total Votes: 5M<br>Control: <strong>100%</strong></p>
-            </div>
-            <div>
-              <h4>2026 (Series A)</h4>
-              <p>Founders: 500k shares<br>Voting Power: 5M votes<br>Total Votes: 7M<br>Control: <strong>~71%</strong></p>
-            </div>
-            <div>
-              <h4>Final Dilution (2053)</h4>
-              <p>*Founders: 500k shares<br>Voting Power: 5M votes<br>Total Votes: 14.5M<br>Control: <strong>~34%</strong></p>
-            </div>
-          </div>
-          <p class="small muted">*Founders include 50/50 split between Anthony J & Anthony S. Voting percentages shown in the Cap Table above reflect the founder's effective voting power including 10:1 super voting rights.</p>
-        </div>
-
-        <h3 style="margin-top:18px">Vesting view (2025‑2053 horizon)</h3>
-        <div class="table-wrap">
-          <table id="vestingTable">
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Founders Vested Δ</th>
-                <th>Founders Cum</th>
-                <th>ESOP Granted</th>
-                <th>ESOP Vested Δ</th>
-                <th>ESOP Vested Cum</th>
-                <th>O/S Pre‑Rounds (Vested‑only)</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-        <p class="note">ESOP grants 100k/year from 2025-2049 (2.5M total). Each grant vests 25% per year over four years starting the <b>next</b> year. All 3M shares fully vested by 2053.</p>
-        
-        <div class="note" style="margin-top: 10px; padding: 10px; background: var(--soft); border-radius: 8px;">
-          <strong>Abbreviations:</strong><br>
-          <strong>Cum</strong> = Cumulative<br>
-          <strong>O/S</strong> = Outstanding<br>
-          <strong>Δ</strong> = Delta (change from previous year)<br>
-          <strong>Pre‑Money</strong> = Company value before investment<br>
-          <strong>Post‑Money</strong> = Company value after investment
-        </div>
-      </div>
-    </div>
-  </section>
-
+  
   <!-- Spacer for proper navigation scrolling -->
   <div id="investor-spacer" style="height: 100px;"></div>
 
   <section id="mission" class="section">
-    <div class="cta-row" style="justify-content: center; margin-bottom: 20px;">
-      <button id="missionToggle" class="btn ghost toggle-large" onclick="toggleMissionVision()" style="border: 2px solid var(--glow2); color: var(--glow2);">🌟 Show Mission & Vision</button>
-    </div>
-    
-    <div id="missionContent" style="display: none;">
+    <div id="missionContent">
       <div class="mission-header">
         <div class="mission-logo">
           <div class="mission-logo-circle"></div>
@@ -572,7 +534,6 @@ th:first-child,td:first-child{text-align:left}
         <p class="cta-text">Whether you're a community member, client, collaborator, cofounder, investor, or any other innovator, let's build the future together.</p>
         <div class="cta-row" style="justify-content: center;">
           <a class="btn" href="mailto:chubbydotai@chubby.ai">Get in Touch</a>
-          <a class="btn ghost" href="#investor">View Investor Details</a>
         </div>
       </div>
     </div>
@@ -580,7 +541,7 @@ th:first-child,td:first-child{text-align:left}
 
   <section id="why" class="section">
     <div class="card">
-      <h2>Why Chubby?</h2>
+      <h2>Why Chubby.Ai?</h2>
       <div class="grid cols-3">
         <div>
           <h3>Built for Enterprise or Everyone</h3>
@@ -618,215 +579,6 @@ th:first-child,td:first-child{text-align:left}
 </div>
 
 <script>
-const YEARS = 29; // 29-year horizon from 2025-2053
-const FOUNDERS_TOTAL = 500_000;
-const ESOP_TOTAL = 2_500_000;
-const ESOP_PER_YEAR = 100_000;
-const ESOP_TRANCHE = ESOP_PER_YEAR / 4; // 25k
-const F_POST_TARGET = 100_000_000_000_000; // $100T
-
-// Round schedule: Using actual years instead of relative years
-const rounds = [
-  { name:"Seed",     year:2025, price:10,       newShares:1_000_000, fixed:true },
-  { name:"Series A", year:2026, price:100,      newShares:1_000_000, fixed:true },
-  { name:"Series B", year:2027, price:1_000,    newShares:1_000_000, fixed:true },
-  { name:"Series C", year:2028, price:10_000,   newShares:1_000_000, fixed:true },
-  { name:"Series D", year:2029, price:100_000,  newShares:1_000_000, fixed:true },
-  { name:"Series E", year:2035, price:1_000_000,newShares:1_000_000, fixed:true },
-  { name:"Series F", year:2045, price:null,     newShares:1_000_000, fixed:false, postTarget:F_POST_TARGET },
-];
-
-function foundersVestedCum(year){
-  // Vesting started August 17, 2024
-  // At 1-year mark (Aug 17, 2025): 125k shares vested
-  // 2024: 0 shares (vesting hasn't started yet)
-  // 2025: 125k shares (1 year of vesting)
-  // 2026: 250k shares (125k + 125k)
-  // 2027: 375k shares (125k + 125k + 125k)
-  // 2028+: 500k shares (125k + 125k + 125k + 125k) - fully vested
-  if(year < 2025) return 0;
-  if(year === 2025) return 500_000; // 1 year of vesting
-  if(year === 2026) return 500_000; // 125k + 125k
-  if(year === 2027) return 500_000; // 125k + 125k + 125k
-  if(year === 2028) return 500_000; // 125k + 125k + 125k + 125k
-  return 500_000; // fully vested from 2028 onwards
-}
-
-function esopGranted(year){
-  // 100k per year from 2025-2049, capped at 25 grants (2.5M total)
-  return (year >= 2025 && year <= 2049) ? ESOP_PER_YEAR : 0;
-}
-
-function esopVestedCum(year){
-  // Sum over all grant years g < year of ESOP_TRANCHE * min(year - g, 4)
-  let cum = 0;
-  for(let g=2025; g<=2049; g++){
-    if(g >= year) break; // grants vest starting next year
-    const installments = Math.min(Math.max(year - g, 0), 4);
-    cum += ESOP_TRANCHE * installments;
-  }
-  // Cap at total ESOP and ensure we don't exceed the total
-  return Math.min(cum, ESOP_TOTAL);
-}
-
-function buildVestingTable(){
-  const tbody = document.querySelector('#vestingTable tbody');
-  tbody.innerHTML = "";
-  
-  console.log('=== VESTING TABLE ===');
-  console.log('Constants:', { YEARS, FOUNDERS_TOTAL, ESOP_TOTAL, ESOP_PER_YEAR, ESOP_TRANCHE });
-  
-  let prevFounders = 0, prevEsop = 0;
-  for(let y=2025; y<=2053; y++){
-    const fCum = foundersVestedCum(y);
-    const fDelta = fCum - prevFounders;
-    prevFounders = fCum;
-
-    const grant = esopGranted(y);
-    const eCum = esopVestedCum(y);
-    const eDelta = eCum - prevEsop;
-    prevEsop = eCum;
-
-    const preRoundsVested = fCum + eCum;
-    
-    if (y <= 2044) { // Log first 20 years for debugging
-      console.log(`Y${y}:`, {
-        foundersVested: fCum,
-        foundersDelta: fDelta,
-        esopGranted: grant,
-        esopVested: eCum,
-        esopDelta: eDelta,
-        totalVested: preRoundsVested
-      });
-    }
-    
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${y}</td>
-      <td>${fDelta.toLocaleString()}</td>
-      <td>${fCum.toLocaleString()}</td>
-      <td>${grant.toLocaleString()}</td>
-      <td>${eDelta.toLocaleString()}</td>
-      <td>${eCum.toLocaleString()}</td>
-      <td>${preRoundsVested.toLocaleString()}</td>
-    `;
-    tbody.appendChild(tr);
-  }
-}
-
-function simulateCapTable(){
-  const tbody = document.querySelector('#capTable tbody');
-  tbody.innerHTML = "";
-
-  let investorSharesCum = 0;
-  
-  console.log('=== CAP TABLE SIMULATION ===');
-  console.log('Constants:', { YEARS, FOUNDERS_TOTAL, ESOP_TOTAL, ESOP_PER_YEAR, ESOP_TRANCHE, F_POST_TARGET });
-
-  for(const r of rounds){
-    const y = r.year; // Use the actual year directly
-    // Pre‑round shares include vested founders + vested ESOP + prior investor shares
-    const preShares = foundersVestedCum(y) + esopVestedCum(y) + investorSharesCum;
-
-    // Price: fixed or back‑solve for F to hit postMoney target
-    let price;
-    if (r.fixed) {
-      price = r.price;
-    } else {
-      // For Series F, solve: postMoney = price * (preShares + newShares) = $100T
-      // Therefore: price = $100T / (preShares + newShares)
-      price = r.postTarget / (preShares + r.newShares);
-    }
-    
-    const preMoney = price * preShares;
-    const raise = price * r.newShares;
-    const postMoney = preMoney + raise;
-    investorSharesCum += r.newShares;
-    const cumShares = preShares + r.newShares;
-
-    console.log(`${r.name} (Y${y}):`, {
-      preShares,
-      newShares: r.newShares,
-      price: formatPrice(price),
-      preMoney: Math.round(preMoney),
-      raise: Math.round(raise),
-      postMoney: Math.round(postMoney),
-      cumShares
-    });
-
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${r.name}</td>
-      <td>Y${y}</td>
-      <td>$${formatPrice(price)}</td>
-      <td>${r.newShares.toLocaleString()}</td>
-      <td>${preShares.toLocaleString()}</td>
-      <td>$${Math.round(preMoney).toLocaleString()}</td>
-      <td>$${Math.round(postMoney).toLocaleString()}</td>
-      <td>${cumShares.toLocaleString()}</td>
-      <td>${calculateFounderVotingPercentage(y, cumShares).toFixed(2)}%</td>
-    `;
-    tbody.appendChild(tr);
-  }
-
-  const note = document.createElement('tr');
-  note.innerHTML = `<td colspan="9" style="text-align:left; color:#a9b0c3">
-    <span class="badge">Note</span> Pre‑money shares are <b>vested‑only</b> founders + vested ESOP + all prior investor shares.
-    Series F price is computed so post‑money equals exactly $100T.
-  </td>`;
-  tbody.appendChild(note);
-}
-
-// Helper function to format prices consistently
-function formatPrice(price) {
-  if (price >= 1_000_000) {
-    return (price / 1_000_000).toFixed(1) + 'M';
-  } else if (price >= 1_000) {
-    return (price / 1_000).toFixed(1) + 'K';
-  } else {
-    return price.toFixed(2);
-  }
-}
-
-function calculateFounderVotingPercentage(year, totalShares) {
-  const foundersVested = foundersVestedCum(year);
-  const foundersVotingPower = foundersVested * 10; // 10:1 super voting power
-  const otherShares = totalShares - foundersVested; // All other shares have 1:1 voting power
-  const totalVotingPower = foundersVotingPower + otherShares; // Total voting power in the company
-  return (foundersVotingPower / totalVotingPower) * 100;
-}
-
-function toggleInvestorCorner() {
-  const investorContent = document.getElementById('investorContent');
-  const investorToggle = document.getElementById('investorToggle');
-  if (investorContent.style.display === 'none') {
-    investorContent.style.display = 'block';
-    investorToggle.textContent = 'Hide Investor Corner';
-    investorToggle.className = 'btn toggle-small';
-  } else {
-    investorContent.style.display = 'none';
-    investorToggle.textContent = 'Show Investor Corner';
-    investorToggle.className = 'btn toggle-large';
-  }
-}
-
-function toggleMissionVision() {
-  const missionContent = document.getElementById('missionContent');
-  const missionToggle = document.getElementById('missionToggle');
-  if (missionContent.style.display === 'none') {
-    missionContent.style.display = 'block';
-    missionToggle.textContent = 'Hide Mission & Vision';
-    missionToggle.className = 'btn ghost toggle-small';
-  } else {
-    missionContent.style.display = 'none';
-    missionToggle.textContent = '🌟 Show Mission & Vision';
-    missionToggle.className = 'btn ghost toggle-large';
-  }
-}
-
-buildVestingTable();
-simulateCapTable();
-
 // Mobile menu functions
 function toggleMobileMenu() {
   const mobileNav = document.getElementById('mobileNav');
